@@ -1,12 +1,12 @@
+// src/config.ts
 import { http, createConfig } from 'wagmi';
-import type { Chain } from 'viem/chains'; 
+import type { Chain } from 'viem/chains';
 
 const MONAD_RPC = process.env.NEXT_PUBLIC_MONAD_RPC!;
 
 export const monadTestnet: Chain = {
   id: 10143,
   name: 'Monad Testnet',
-  network: 'monad-testnet',
   nativeCurrency: {
     name: 'Monad',
     symbol: 'MON',
