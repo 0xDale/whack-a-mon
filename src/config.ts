@@ -1,6 +1,7 @@
-// src/config.ts
 import { http, createConfig } from 'wagmi';
-import { Chain } from 'wagmi';
+import type { Chain } from 'viem/chains'; 
+
+const MONAD_RPC = process.env.NEXT_PUBLIC_MONAD_RPC!;
 
 export const monadTestnet: Chain = {
   id: 10143,
@@ -13,10 +14,10 @@ export const monadTestnet: Chain = {
   },
   rpcUrls: {
     default: {
-      http: ['https://snowy-floral-theorem.monad-testnet.quiknode.pro/fc22e376d43919d211f52e068defe10aaa3b81ee/'],
+      http: [MONAD_RPC],
     },
     public: {
-      http: ['https://snowy-floral-theorem.monad-testnet.quiknode.pro/fc22e376d43919d211f52e068defe10aaa3b81ee/'],
+      http: [MONAD_RPC],
     },
   },
   blockExplorers: {
@@ -31,8 +32,6 @@ export const monadTestnet: Chain = {
 export const config = createConfig({
   chains: [monadTestnet],
   transports: {
-    [monadTestnet.id]: http(
-      'https://snowy-floral-theorem.monad-testnet.quiknode.pro/fc22e376d43919d211f52e068defe10aaa3b81ee/'
-    ),
+    [monadTestnet.id]: http(MONAD_RPC),
   },
 });
